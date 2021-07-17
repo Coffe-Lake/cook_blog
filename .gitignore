@@ -1,0 +1,11 @@
+# ignore .vscode
+.vscode/
+
+# ignore venv
+venv
+
+#ignore .idea
+.idea
+
+#ignore db
+cook/db.sqlite3 
