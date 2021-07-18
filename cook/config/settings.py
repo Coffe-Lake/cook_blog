@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # other lib
+    'mptt',
+    
+    # custom lib
     'blog',
     
 ]
