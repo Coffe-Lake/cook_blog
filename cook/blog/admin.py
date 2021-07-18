@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, Tag
+from .models import Tag, Category
+from mptt.models import MPTTModel
 
 
 # Register your models here.
