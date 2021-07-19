@@ -64,3 +64,19 @@ class Post(models.Model):
     )
     tags = models.ManyToManyField(Tag, verbose_name="Теги", related_name="post")
     create_at = models.DateTimeField(verbose_name="Дата", auto_now_add=True)
+    
+    
+class  Recipe(models.Model):
+    name = models.CharField(max_length=100)
+    service = models.CharField(max_length=50)
+    prep_time = models.PositiveIntegerField(default=0)
+    cook_time = models.PositiveIntegerField(default=0)
+    ingredients = models.TextField()
+    directions = models.TextField()
+    post = models.ForeignKey(
+        Post, 
+        related_name="recipe",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
