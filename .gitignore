@@ -9,3 +9,6 @@ venv
 
 #ignore db
 cook/db.sqlite3 
+
+#ignore media
+cook/media/*
