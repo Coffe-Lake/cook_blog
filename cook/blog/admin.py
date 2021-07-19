@@ -20,10 +20,10 @@ class PostAdmin(admin.ModelAdmin):
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ['name', "prep_time", "cook_time", "post"]
 
+
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['name', "email", "post"]
-
 
 
 # Register your models here.

@@ -3,6 +3,8 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 
 
+# ___________________ КАТЕГОРИИ ___________________
+
 class Category(MPTTModel):
     name = models.CharField(verbose_name="Название", max_length=100)
     slug = models.SlugField(max_length=100)
@@ -28,7 +30,9 @@ class Category(MPTTModel):
         else:
             return self.name
     
-    
+
+# ___________________ МЕТКИ/ТЕГИ ___________________
+
 class Tag(models.Model):
     name = models.CharField(verbose_name="Название", max_length=50)
     slug = models.SlugField(max_length=50)
@@ -42,7 +46,9 @@ class Tag(models.Model):
             return f"{self.name[:15]}..."
         else:
             return self.name
-        
+
+
+# ___________________ ПОСТЫ ___________________
 
 class Post(models.Model):
     author = models.ForeignKey(
@@ -75,7 +81,9 @@ class Post(models.Model):
         else:
             return self.title
         
-    
+
+# ___________________ РЕЦЕПТЫ ___________________ 
+
 class Recipe(models.Model):
     name = models.CharField(verbose_name="Имя", max_length=100)
     service = models.CharField(verbose_name="Затрачиваемое время", max_length=50)
@@ -103,6 +111,8 @@ class Recipe(models.Model):
             return self.name
     
     
+# ___________________ КОММЕНТАРИИ ___________________    
+
 class Comment(models.Model):
     name = models.CharField(verbose_name="Имя", max_length=50)
     email  = models.CharField(max_length=100)
