@@ -7,6 +7,7 @@ from . import models
 
 class RecipeInline(admin.StackedInline):
     model = models.Recipe
+    extra = 1
 
 
 @admin.register(models.Post)
