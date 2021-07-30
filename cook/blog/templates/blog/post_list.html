@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="breadcrumb__text">
-                                <h2>Categories: <span>Recipes</span></h2>
+                                <h2>Categories: <span>{{ post_list.first.category.name }}</span></h2>
                                 <div class="breadcrumb__option">
                                     <a href="#">Home</a>
                                     <span>Recipes</span>
@@ -22,19 +22,19 @@
                                         <div class="categories__post__item__pic small__item set-bg"
                                             data-setbg="{{ post.image.url }}">
                                             <div class="post__meta">
-                                                <h4>08</h4>
-                                                <span>Aug</span>    
+                                                <h4>{{ post.create_at|date:"d" }}</h4>
+                                                <span>{{ post.create_at|date:"M" }}</span>    
                                             </div>
                                         </div>
                                         <div class="categories__post__item__text">
                                             <span class="post__label">{{ post.category }}</span>
-                                            <h3><a href="#">{{ post.title }}</a></h3>
+                                            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                                             <ul class="post__widget">
                                                 <li>by <span>{{ post.author }}</span></li>
                                                 <li>3 min read</li>
                                                 <li>20 Comment</li>
                                             </ul>
-                                            <p>{{ post.text }}</p>
+                                            <p>{{ post.text|slice:":250" }}</p>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -64,7 +64,7 @@
                                                 gravida...</p>
                                         </div>
                                     </div> -->
-                                    <div class="categories__post__item__plain set-bg"
+                                    {% comment %} <div class="categories__post__item__plain set-bg"
                                         data-setbg="img/categories/categories-post/cp-6.jpg">
                                         <div class="categories__post__item__text">
                                             <div class="post__meta">
@@ -84,7 +84,7 @@
                                                 <a href="#"><i class="fa fa-envelope-o"></i> <span>08</span></a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                     <!-- <div class="categories__post__item">
                                         <div class="categories__post__item__pic smaller__large set-bg"
                                             data-setbg="img/categories/categories-post/cp-8.jpg">

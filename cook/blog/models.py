@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from django.urls import reverse
 
 
 # ___________________ КАТЕГОРИИ ___________________
@@ -60,7 +61,7 @@ class Post(models.Model):
     )
     title = models.CharField(verbose_name="Название", max_length=200)
     image = models.ImageField(verbose_name="Изображение", upload_to='articles/')
-    text = models.TextField()
+    text = models.TextField(verbose_name="Текст")
     category = models.ForeignKey(
         Category,
         verbose_name="Категория", 
@@ -70,6 +71,8 @@ class Post(models.Model):
     )
     tags = models.ManyToManyField(Tag, verbose_name="Теги", related_name="post")
     create_at = models.DateTimeField(verbose_name="Дата", auto_now_add=True)
+    slug = models.SlugField(max_length=200, default='')
+
 
     class Meta:
         verbose_name = "пост"
@@ -80,6 +83,9 @@ class Post(models.Model):
             return f"{self.title[:15]}..."
         else:
             return self.title
+    
+    def get_absolute_url(self):
+        return reverse("post_simple", kwargs={"slug": self.category.slug, "post_slug": self.slug })
         
 
 # ___________________ РЕЦЕПТЫ ___________________ 
