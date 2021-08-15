@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
 from django.db import models
-from mptt.models import MPTTModel, TreeForeignKey
 from django.urls import reverse
 
+from mptt.models import MPTTModel, TreeForeignKey
+from ckeditor.fields import RichTextField
 
 # ___________________ КАТЕГОРИИ ___________________
 
@@ -71,7 +72,7 @@ class Post(models.Model):
     )
     tags = models.ManyToManyField(Tag, verbose_name="Теги", related_name="post")
     create_at = models.DateTimeField(verbose_name="Дата", auto_now_add=True)
-    slug = models.SlugField(max_length=200, default='')
+    slug = models.SlugField(max_length=200, default='', unique=True)
 
 
     class Meta:
@@ -97,8 +98,8 @@ class Recipe(models.Model):
     service = models.CharField(verbose_name="Затрачиваемое время", max_length=50)
     prep_time = models.PositiveIntegerField(verbose_name="Время подготовки", default=0)
     cook_time = models.PositiveIntegerField(verbose_name="Время приготовления", default=0)
-    ingredients = models.TextField(verbose_name="Ингредиенты")
-    directions = models.TextField(verbose_name="Руководство по приготовлению")
+    ingredients = RichTextField(verbose_name="Ингредиенты")
+    directions = RichTextField(verbose_name="Руководство по приготовлению")
     post = models.ForeignKey(
         Post, 
         related_name="recipes",

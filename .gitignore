@@ -4,11 +4,14 @@
 # ignore venv
 venv
 
-#ignore .idea
+# ignore .idea
 .idea
 
-#ignore db
+# ignore db
 cook/db.sqlite3 
 
-#ignore media
+# ignore media
 cook/media/*
+
+# ignore migrations
+cook/blog/migrations/*
