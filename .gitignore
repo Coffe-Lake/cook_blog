@@ -15,3 +15,6 @@ cook/media/*
 
 # ignore migrations
 cook/blog/migrations/*
+
+# ignore pycache
+cook/blog/pycache/*
